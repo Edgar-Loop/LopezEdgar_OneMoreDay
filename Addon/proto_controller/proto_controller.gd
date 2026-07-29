@@ -1,0 +1,68 @@
+extends CharacterBody3D
+
+@onready var head: Node3D = $Head
+@onready var build_ray: RayCast3D = $Head/Camera3D/RayCast3D
+
+var last_build_position := Vector3.ZERO
+
+var mouse_control : bool = false
+
+var current_speed = 15.0
+const jump_velocity = 10
+
+const mouse_sens = 0.4
+
+var lerp_speed = 10.0
+var direction = Vector3.ZERO
+
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func get_build_position() -> Vector3:
+	if build_ray.is_colliding():
+		last_build_position = build_ray.get_collision_point()
+		last_build_position.y += 0.2
+		return last_build_position
+
+	return last_build_position
+
+func _unhandled_input(event):
+	if event.is_action_pressed("MC"):
+		mouse_control = !mouse_control
+
+		if mouse_control:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func _input(event):
+	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		return
+	if event is InputEventMouseMotion:
+		rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
+		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sens))
+		head.rotation.x = clamp(head.rotation.x,deg_to_rad(-89),deg_to_rad(89))
+		
+func _physics_process(delta: float) -> void:
+	#if build_ray.is_colliding():
+		#print("Player sees:", build_ray.get_collision_point())
+
+	if not is_on_floor():
+		velocity += get_gravity() * delta * 2.3
+
+	if Input.is_action_pressed("Jump") and is_on_floor():
+		velocity.y = jump_velocity
+
+	var input_dir := Input.get_vector("Left", "Right", "Forward", "Backwards")
+	direction = lerp(direction, (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta * lerp_speed)
+	
+	if direction:
+		velocity.x = direction.x * current_speed
+		velocity.z = direction.z * current_speed
+	else:
+		velocity.x = move_toward(velocity.x, 0, current_speed)
+		velocity.z = move_toward(velocity.z, 0, current_speed)
+		
+	move_and_slide()

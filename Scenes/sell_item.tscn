@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://c4hksl5ds1rj0"]
+
+[ext_resource type="Script" uid="uid://bx1aeldek8meb" path="res://Scripts/sell_item.gd" id="1_yidvm"]
+[ext_resource type="Texture2D" uid="uid://bg64de4q5hsyw" path="res://Addon/OakPlankMaterial.jpg" id="2_02lx1"]
+[ext_resource type="PackedScene" uid="uid://bxks7bhqqoog6" path="res://Scenes/drill.tscn" id="2_ngjl6"]
+[ext_resource type="Texture2D" uid="uid://cpbides33mcu2" path="res://icon.svg" id="3_ngjl6"]
+
+[node name="SellItem" type="Control" unique_id=159434866 node_paths=PackedStringArray("card_frame")]
+layout_mode = 3
+anchor_right = 0.21700001
+anchor_bottom = 0.38500002
+offset_right = -249.98401
+offset_bottom = -250.0
+script = ExtResource("1_yidvm")
+building_scene = ExtResource("2_ngjl6")
+sell_price = 100
+card_frame = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=171065536]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 250.0
+texture = ExtResource("2_02lx1")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TextureRect" unique_id=1566604092]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 240.0
+offset_right = 173.57877
+offset_bottom = 263.0
+scale = Vector2(2.8243573, 3.081506)
+text = "5"
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect" unique_id=302093794]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 250.0
+offset_right = 225.0
+offset_bottom = 386.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_ngjl6")
+expand_mode = 2

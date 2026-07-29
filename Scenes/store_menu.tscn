@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://b4x0pa0ajim5a"]
+
+[ext_resource type="Texture2D" uid="uid://cpbides33mcu2" path="res://icon.svg" id="1_025or"]
+[ext_resource type="Script" uid="uid://da7mh5bd1y31y" path="res://Scripts/store_menu.gd" id="1_rl1er"]
+[ext_resource type="Texture2D" uid="uid://djbl0s8fswcfs" path="res://Addon/texture_07.png" id="3_mgb1s"]
+[ext_resource type="Script" uid="uid://66yycteewy6l" path="res://Scripts/store_items.gd" id="3_sjd1i"]
+[ext_resource type="PackedScene" uid="uid://c4hksl5ds1rj0" path="res://Scenes/sell_item.tscn" id="5_yacys"]
+
+[node name="StoreMenu" type="Control" unique_id=1696419140]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rl1er")
+
+[node name="Store" type="Button" parent="." unique_id=321225445]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 80.0
+offset_right = 137.0
+offset_bottom = 262.0
+scale = Vector2(0.5, 0.5)
+focus_mode = 0
+action_mode = 0
+text = "Store"
+icon = ExtResource("1_025or")
+icon_alignment = 1
+vertical_icon_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=729024484 node_paths=PackedStringArray("store_menu")]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 42.0
+offset_right = 1086.0
+offset_bottom = 606.0
+layout_direction = 1
+texture = ExtResource("3_mgb1s")
+expand_mode = 2
+script = ExtResource("3_sjd1i")
+store_menu = NodePath("..")
+
+[node name="StoreItems" type="HBoxContainer" parent="TextureRect" unique_id=1107348126]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -496.0
+offset_top = -282.0
+offset_right = 494.0
+offset_bottom = 283.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SellItem" parent="TextureRect/StoreItems" unique_id=159434866 instance=ExtResource("5_yacys")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(35, 35)
+offset_transform_scale = Vector2(0.4, 0.4)
+offset_transform_visual_only = false
+
+[connection signal="pressed" from="Store" to="." method="_on_store_pressed"]
+[connection signal="pressed" from="Store" to="TextureRect/StoreItems" method="_on_store_pressed"]

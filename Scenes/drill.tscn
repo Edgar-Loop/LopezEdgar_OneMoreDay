@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://bxks7bhqqoog6"]
+
+[ext_resource type="PackedScene" uid="uid://br5w6e0j67anx" path="res://BlenderObj/Drill.blend" id="1_j3tjn"]
+[ext_resource type="Script" uid="uid://c0yeab8b25ejo" path="res://Scripts/drill.gd" id="2_5871x"]
+[ext_resource type="Script" uid="uid://cixnr5jvrx6c2" path="res://Scripts/nurbs_path.gd" id="2_e2c52"]
+
+[sub_resource type="Animation" id="Animation_e2c52"]
+resource_name = "Drilling"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../NurbsPath:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.06666667, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5707964), Vector3(0, -6.2831855, 1.5707964)]
+}
+
+[sub_resource type="Animation" id="Animation_5871x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../NurbsPath:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5707964)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m0rgh"]
+_data = {
+&"Drilling": SubResource("Animation_e2c52"),
+&"RESET": SubResource("Animation_5871x")
+}
+
+[node name="Drill" unique_id=1356785509 instance=ExtResource("1_j3tjn")]
+process_mode = 1
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+script = ExtResource("2_5871x")
+
+[node name="NurbsPath" parent="." index="4" unique_id=798701225]
+transform = Transform3D(-4.371139e-08, -5.2953267, 0, 1, -2.3146609e-07, 0, 0, 0, 5.2953267, 0.021882772, 0.5566554, -0.073530674)
+script = ExtResource("2_e2c52")
+
+[node name="NurbsPath-col" parent="." index="10" unique_id=1859892706]
+transform = Transform3D(-4.371139e-08, -5.2953267, 9.2586436e-07, 1, -2.3146609e-07, 0, 7.642742e-15, 9.2586436e-07, 5.2953267, 0.021882772, 0.5566554, -0.073530674)
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NurbsPath-col" index="1" unique_id=2068020212]
+libraries/ = SubResource("AnimationLibrary_m0rgh")
+
+[node name="Area3D" type="Area3D" parent="." index="13" unique_id=1181339356]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=459092087]

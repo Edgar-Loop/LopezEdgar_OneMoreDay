@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://brko0o1cwq037"]
+
+[ext_resource type="Script" uid="uid://d1ty6ufo0ae7w" path="res://Scripts/game_manager.gd" id="1_oj352"]
+[ext_resource type="PackedScene" uid="uid://dia4o0cil031w" path="res://Scenes/main_game.tscn" id="2_e5fcp"]
+[ext_resource type="PackedScene" uid="uid://d3j0ig1p7n3hn" path="res://Scenes/pause_menu.tscn" id="3_sq00h"]
+[ext_resource type="PackedScene" uid="uid://b4x0pa0ajim5a" path="res://Scenes/store_menu.tscn" id="4_mmt5l"]
+[ext_resource type="Script" uid="uid://bkyavviyucwgc" path="res://Scripts/money.gd" id="5_fgdfb"]
+[ext_resource type="PackedScene" uid="uid://wmloslfmiyq" path="res://Scenes/build_manager.tscn" id="6_yqty0"]
+
+[node name="GameManager" type="Node" unique_id=437054036]
+process_mode = 3
+script = ExtResource("1_oj352")
+
+[node name="MainGame" parent="." unique_id=246147891 instance=ExtResource("2_e5fcp")]
+process_mode = 1
+
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=118246792]
+
+[node name="Control" parent="PauseMenu" unique_id=93917995 node_paths=PackedStringArray("game_manager") instance=ExtResource("3_sq00h")]
+process_mode = 0
+offset_left = 177.00003
+offset_top = 69.0
+offset_right = 177.28
+offset_bottom = 69.22398
+scale = Vector2(3, 3)
+game_manager = NodePath("../..")
+
+[node name="Sidebuttons" type="CanvasLayer" parent="." unique_id=1145573120]
+process_mode = 1
+
+[node name="StoreMenu" parent="Sidebuttons" unique_id=1696419140 node_paths=PackedStringArray("game_manager", "build_manager") instance=ExtResource("4_mmt5l")]
+game_manager = NodePath("../..")
+build_manager = NodePath("../../BuildManager")
+
+[node name="Money" type="Label" parent="." unique_id=524640759 node_paths=PackedStringArray("game_manager")]
+offset_left = 456.0
+offset_top = 4.0
+offset_right = 496.0
+offset_bottom = 27.0
+scale = Vector2(1.8, 1.8)
+script = ExtResource("5_fgdfb")
+game_manager = NodePath("..")
+
+[node name="BuildManager" parent="." unique_id=1090544556 instance=ExtResource("6_yqty0")]

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://tbem62ud4je2"]
+
+[ext_resource type="PackedScene" uid="uid://cmys868ckugny" path="res://Scenes/grid.tscn" id="1_lc1oi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8od7v"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qc4db"]
+material = SubResource("StandardMaterial3D_8od7v")
+size = Vector2(10, 10)
+
+[node name="Test" type="Node3D" unique_id=163799704]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=628023915]
+mesh = SubResource("PlaneMesh_qc4db")
+
+[node name="Grid" parent="." unique_id=106087058 instance=ExtResource("1_lc1oi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+gridWidth = 10
+gridHeight = 11

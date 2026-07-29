@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dia4o0cil031w"]
+
+[ext_resource type="Texture2D" uid="uid://djbl0s8fswcfs" path="res://Addon/texture_07.png" id="1_l756w"]
+[ext_resource type="PackedScene" uid="uid://b1g6316yxjmga" path="res://Scenes/player.tscn" id="2_pu3va"]
+[ext_resource type="Texture2D" uid="uid://dsq3mxac2lf1k" path="res://Addon/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="3_0e3vx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pu3va"]
+albedo_texture = ExtResource("1_l756w")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6j5ir"]
+panorama = ExtResource("3_0e3vx")
+
+[sub_resource type="Sky" id="Sky_mgc0q"]
+sky_material = SubResource("PanoramaSkyMaterial_6j5ir")
+radiance_size = 0
+
+[sub_resource type="Environment" id="Environment_bb2iq"]
+background_mode = 2
+background_energy_multiplier = 0.4
+sky = SubResource("Sky_mgc0q")
+glow_enabled = true
+
+[node name="MainGame" type="Node3D" unique_id=246147891]
+
+[node name="Area" type="Node3D" parent="." unique_id=793946622]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Area" unique_id=896431059]
+material_override = SubResource("StandardMaterial3D_pu3va")
+use_collision = true
+size = Vector3(100, 0.5, 100)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Area" unique_id=1442749160]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 49.853104, 50, 0)
+material_override = SubResource("StandardMaterial3D_pu3va")
+use_collision = true
+size = Vector3(100, 0.5, 100)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Area" unique_id=972334848]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -50.146896, 50, 0)
+material_override = SubResource("StandardMaterial3D_pu3va")
+use_collision = true
+size = Vector3(100, 0.5, 100)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Area" unique_id=770409028]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, -0.14689636, 50, 50)
+material_override = SubResource("StandardMaterial3D_pu3va")
+use_collision = true
+size = Vector3(100, 0.5, 100)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Area" unique_id=1886768000]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, -0.14689636, 50, -50)
+material_override = SubResource("StandardMaterial3D_pu3va")
+use_collision = true
+size = Vector3(100, 0.5, 100)
+
+[node name="Player" parent="." unique_id=1878304181 instance=ExtResource("2_pu3va")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46553516, 0)
+
+[node name="Lighting" type="Node3D" parent="." unique_id=162003419]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting" unique_id=578754266]
+environment = SubResource("Environment_bb2iq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" unique_id=2078418653]
+transform = Transform3D(1, 0, 0, 0, -0.031340957, 0.99950874, 0, -0.99950874, -0.031340957, 0, 7.1226497, 0)
+light_energy = 2.053
+shadow_enabled = true
