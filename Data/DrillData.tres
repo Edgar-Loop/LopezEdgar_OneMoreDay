@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BuildableData" format=3 uid="uid://d3xxov0i0rqsr"]
+
+[ext_resource type="PackedScene" uid="uid://bxks7bhqqoog6" path="res://Scenes/drill.tscn" id="1_kst7m"]
+[ext_resource type="Script" uid="uid://biejn8gg3bdea" path="res://Scripts/BuildableData.gd" id="1_quaiy"]
+
+[resource]
+script = ExtResource("1_quaiy")
+build_name = "Drill"
+buy_price = 100
+sell_price = 100
+building_scene = ExtResource("1_kst7m")
+metadata/_custom_type_script = "uid://biejn8gg3bdea"

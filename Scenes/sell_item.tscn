@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bx1aeldek8meb" path="res://Scripts/sell_item.gd" id="1_yidvm"]
 [ext_resource type="Texture2D" uid="uid://bg64de4q5hsyw" path="res://Addon/OakPlankMaterial.jpg" id="2_02lx1"]
-[ext_resource type="PackedScene" uid="uid://bxks7bhqqoog6" path="res://Scenes/drill.tscn" id="2_ngjl6"]
+[ext_resource type="Resource" uid="uid://d3xxov0i0rqsr" path="res://Data/DrillData.tres" id="2_ngjl6"]
 [ext_resource type="Texture2D" uid="uid://cpbides33mcu2" path="res://icon.svg" id="3_ngjl6"]
 
 [node name="SellItem" type="Control" unique_id=159434866 node_paths=PackedStringArray("card_frame")]
@@ -12,8 +12,7 @@ anchor_bottom = 0.38500002
 offset_right = -249.98401
 offset_bottom = -250.0
 script = ExtResource("1_yidvm")
-building_scene = ExtResource("2_ngjl6")
-sell_price = 100
+buildable_data = ExtResource("2_ngjl6")
 card_frame = NodePath("TextureRect")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=171065536]

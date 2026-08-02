@@ -4,15 +4,16 @@ class_name GameManager
 
 @onready var player: CharacterBody3D = $MainGame/Player
 @onready var build_manager: BuildManager = $BuildManager
+@onready var store_menu = $Sidebuttons/StoreMenu
 
 signal toggle_game_pause (is_paused : bool)
 signal money_changed (new_money : int)
 
-signal build_mode_changed(enabled)
-signal sell_mode_changed(enabled)
+#signal build_mode_changed(enabled)
+#signal sell_mode_changed(enabled)
 
-var build_mode := false
-var sell_mode := false
+#var build_mode := false
+#var sell_mode := false
 
 var money := 100
 
@@ -25,9 +26,9 @@ var game_paused : = false:
 		emit_signal("toggle_game_pause", game_paused)
 
 func _ready():
-	print("GameManager Player:", player)
 	build_manager.player = player
-	print("BuildManager Player:", build_manager.player)
+	build_manager.game_manager = self
+	build_manager.store_menu = store_menu
 
 func _physics_process(delta):
 	pass
@@ -56,5 +57,5 @@ func _input(event: InputEvent):
 		game_paused = !game_paused
 		print("step 1")
 
-func begin_placing(scene: PackedScene):
-	player.begin_placing(scene)
+#func begin_placing(buildable_data: BuildableData):
+	#player.begin_placing(buildable_data)

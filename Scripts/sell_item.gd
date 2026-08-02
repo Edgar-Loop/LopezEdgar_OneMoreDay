@@ -2,11 +2,9 @@ extends Control
 
 class_name SellItem
 
-@export var building_scene: PackedScene
+signal buy_requested(buildable_data)
 
-signal buy_requested(scene)
-
-@export var sell_price: int 
+@export var buildable_data: BuildableData
 @export var card_frame: TextureRect
 @export var game_manager: GameManager
 
@@ -29,6 +27,6 @@ func _on_card_gui_input(event: InputEvent):
 	if event is InputEventMouseButton \
 	and event.button_index == MOUSE_BUTTON_LEFT \
 	and event.pressed:
-		if game_manager.buy(sell_price):
+		if game_manager.buy(buildable_data.buy_price):
 			hide()
-			buy_requested.emit(building_scene)
+			buy_requested.emit(buildable_data)

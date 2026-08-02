@@ -15,7 +15,7 @@ const mouse_sens = 0.4
 var lerp_speed = 10.0
 var direction = Vector3.ZERO
 
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+#var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

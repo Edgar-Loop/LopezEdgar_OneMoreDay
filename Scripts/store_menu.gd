@@ -5,6 +5,8 @@ extends Control
 
 @onready var store_items: HBoxContainer = $TextureRect/StoreItems
 
+var card_lookup := {}
+
 var _store_opened := false
 
 signal toggle_store (is_opened : bool)
@@ -17,11 +19,12 @@ func _ready():
 		if child is SellItem:
 			child.game_manager = game_manager
 			child.buy_requested.connect(_on_buy_requested)
+			card_lookup[child.buildable_data] = child
 
-func _on_buy_requested(scene: PackedScene):
+func _on_buy_requested(buildable_data: BuildableData):
 	store_opened = false
 
-	build_manager.begin_placing(scene)
+	build_manager.begin_placing(buildable_data)
 
 func _process(delta: float) -> void:
 	pass
@@ -39,6 +42,18 @@ var store_opened: bool:
 		_store_opened = value
 		emit_signal("toggle_store", _store_opened)
 
+func show_store_card(buildable_data: BuildableData) -> void:
+	print("Trying to show:", buildable_data)
+
+	if card_lookup.has(buildable_data):
+		print("Found card!")
+		card_lookup[buildable_data].show()
+	else:
+		print("Didn't find card!")
+
 func _on_store_pressed() -> void:
 	print("store")
 	store_opened = !store_opened
+
+func _on_sell_pressed() -> void:
+	build_manager.toggle_sell_mode()

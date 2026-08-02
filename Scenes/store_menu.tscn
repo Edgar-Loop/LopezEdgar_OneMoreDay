@@ -29,6 +29,20 @@ icon = ExtResource("1_025or")
 icon_alignment = 1
 vertical_icon_alignment = 2
 
+[node name="Sell" type="Button" parent="." unique_id=1171954886]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 172.0
+offset_right = 137.0
+offset_bottom = 354.0
+scale = Vector2(0.5, 0.5)
+focus_mode = 0
+action_mode = 0
+text = "Sell"
+icon = ExtResource("1_025or")
+icon_alignment = 1
+vertical_icon_alignment = 2
+
 [node name="TextureRect" type="TextureRect" parent="." unique_id=729024484 node_paths=PackedStringArray("store_menu")]
 layout_mode = 0
 offset_left = 94.0
@@ -66,3 +80,4 @@ offset_transform_visual_only = false
 
 [connection signal="pressed" from="Store" to="." method="_on_store_pressed"]
 [connection signal="pressed" from="Store" to="TextureRect/StoreItems" method="_on_store_pressed"]
+[connection signal="pressed" from="Sell" to="." method="_on_sell_pressed"]

@@ -32,7 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=1549239568]
 
 [node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D" unique_id=1176285976]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8477521)
 target_position = Vector3(0, 0, -20)
 hit_back_faces = false
 collide_with_areas = true
