@@ -15,7 +15,7 @@ signal money_changed (new_money : int)
 #var build_mode := false
 #var sell_mode := false
 
-var money := 100
+var money := 1000
 
 var game_paused : = false:
 	get:

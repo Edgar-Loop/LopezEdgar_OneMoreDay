@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("1_quaiy")
-build_name = "Drill"
+display_name = "Drill"
 buy_price = 100
 sell_price = 100
-building_scene = ExtResource("1_kst7m")
+
 metadata/_custom_type_script = "uid://biejn8gg3bdea"

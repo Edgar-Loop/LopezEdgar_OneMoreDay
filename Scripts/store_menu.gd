@@ -21,10 +21,10 @@ func _ready():
 			child.buy_requested.connect(_on_buy_requested)
 			card_lookup[child.buildable_data] = child
 
-func _on_buy_requested(buildable_data: BuildableData):
+func _on_buy_requested(scene: PackedScene, buildable_data: BuildableData):
 	store_opened = false
 
-	build_manager.begin_placing(buildable_data)
+	build_manager.begin_placing(scene, buildable_data)
 
 func _process(delta: float) -> void:
 	pass

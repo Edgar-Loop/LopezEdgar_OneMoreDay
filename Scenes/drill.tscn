@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://br5w6e0j67anx" path="res://BlenderObj/Drill.blend" id="1_j3tjn"]
 [ext_resource type="Script" uid="uid://c0yeab8b25ejo" path="res://Scripts/drill.gd" id="2_5871x"]
 [ext_resource type="Script" uid="uid://cixnr5jvrx6c2" path="res://Scripts/nurbs_path.gd" id="2_e2c52"]
+[ext_resource type="PackedScene" uid="uid://bn0v0qey34hay" path="res://Scenes/ore.tscn" id="3_m0rgh"]
+[ext_resource type="Resource" uid="uid://d3xxov0i0rqsr" path="res://Data/DrillData.tres" id="4_6ia6x"]
 
 [sub_resource type="Animation" id="Animation_e2c52"]
 resource_name = "Drilling"
@@ -46,6 +48,8 @@ _data = {
 process_mode = 1
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 script = ExtResource("2_5871x")
+ore_scene = ExtResource("3_m0rgh")
+buildable_data = ExtResource("4_6ia6x")
 
 [node name="NurbsPath" parent="." index="4" unique_id=798701225]
 transform = Transform3D(-4.371139e-08, -5.2953267, 0, 1, -2.3146609e-07, 0, 0, 0, 5.2953267, 0.021882772, 0.5566554, -0.073530674)
@@ -61,3 +65,6 @@ libraries/ = SubResource("AnimationLibrary_m0rgh")
 [node name="Area3D" type="Area3D" parent="." index="13" unique_id=1181339356]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=459092087]
+
+[node name="OutputPoint" type="Marker3D" parent="." index="14" unique_id=1650875198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6044362, 4.4822254, 0)

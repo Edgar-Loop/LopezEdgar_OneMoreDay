@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BuildableData" format=3 uid="uid://bvcsp5dl40hck"]
+
+[ext_resource type="Script" uid="uid://biejn8gg3bdea" path="res://Scripts/BuildableData.gd" id="1_6lreb"]
+
+[resource]
+script = ExtResource("1_6lreb")
+display_name = "Conveyor"
+buy_price = 10
+sell_price = 10
+metadata/_custom_type_script = "uid://biejn8gg3bdea"

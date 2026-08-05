@@ -45,10 +45,11 @@ func set_ray_exceptions(node: Node, exclude: bool) -> void:
 	for child in node.get_children():
 		set_ray_exceptions(child, exclude)
 
-func begin_placing(buildable_data: BuildableData) -> void:
+func begin_placing(scene: PackedScene, buildable_data: BuildableData) -> void:
 	if current_building != null:
 		return
-	current_building = buildable_data.building_scene.instantiate()
+
+	current_building = scene.instantiate()
 	current_building.buildable_data = buildable_data
 	print(current_building)
 	get_tree().current_scene.add_child(current_building)

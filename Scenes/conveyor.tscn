@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://20da5jxygr07"]
+
+[ext_resource type="Script" uid="uid://cx775cro8l4pw" path="res://Scripts/conveyor.gd" id="1_nqhc4"]
+[ext_resource type="Resource" uid="uid://bvcsp5dl40hck" path="res://Data/ConveyorData.tres" id="2_p60iw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_r7wmg"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gavrl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_57s3v"]
+
+[sub_resource type="PointMesh" id="PointMesh_vuk0c"]
+
+[node name="Conveyor" type="Node3D" unique_id=1761254291]
+script = ExtResource("1_nqhc4")
+buildable_data = ExtResource("2_p60iw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=668057260]
+mesh = SubResource("BoxMesh_r7wmg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=751769416]
+physics_material_override = SubResource("PhysicsMaterial_gavrl")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1269414733]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1593668997]
+shape = SubResource("BoxShape3D_57s3v")
+
+[node name="Arrow" type="MeshInstance3D" parent="." unique_id=1814204472]
+mesh = SubResource("PointMesh_vuk0c")

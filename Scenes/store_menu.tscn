@@ -4,7 +4,11 @@
 [ext_resource type="Script" uid="uid://da7mh5bd1y31y" path="res://Scripts/store_menu.gd" id="1_rl1er"]
 [ext_resource type="Texture2D" uid="uid://djbl0s8fswcfs" path="res://Addon/texture_07.png" id="3_mgb1s"]
 [ext_resource type="Script" uid="uid://66yycteewy6l" path="res://Scripts/store_items.gd" id="3_sjd1i"]
-[ext_resource type="PackedScene" uid="uid://c4hksl5ds1rj0" path="res://Scenes/sell_item.tscn" id="5_yacys"]
+[ext_resource type="Script" uid="uid://bx1aeldek8meb" path="res://Scripts/sell_item.gd" id="5_yacys"]
+[ext_resource type="Resource" uid="uid://d3xxov0i0rqsr" path="res://Data/DrillData.tres" id="6_modop"]
+[ext_resource type="PackedScene" uid="uid://bxks7bhqqoog6" path="res://Scenes/drill.tscn" id="7_f4mas"]
+[ext_resource type="Resource" uid="uid://bvcsp5dl40hck" path="res://Data/ConveyorData.tres" id="8_q00ha"]
+[ext_resource type="PackedScene" uid="uid://20da5jxygr07" path="res://Scenes/conveyor.tscn" id="9_5ab3w"]
 
 [node name="StoreMenu" type="Control" unique_id=1696419140]
 layout_mode = 3
@@ -69,14 +73,119 @@ offset_bottom = 283.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SellItem" parent="TextureRect/StoreItems" unique_id=159434866 instance=ExtResource("5_yacys")]
+[node name="DrillCard" type="Control" parent="TextureRect/StoreItems" unique_id=298325091 node_paths=PackedStringArray("card_frame", "icon", "name_label", "price_label")]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-offset_transform_enabled = true
-offset_transform_position = Vector2(35, 35)
-offset_transform_scale = Vector2(0.4, 0.4)
-offset_transform_visual_only = false
+script = ExtResource("5_yacys")
+buildable_data = ExtResource("6_modop")
+building_scene = ExtResource("7_f4mas")
+card_frame = NodePath("Image")
+icon = NodePath("Background")
+name_label = NodePath("Name")
+price_label = NodePath("Price")
+
+[node name="Image" type="TextureRect" parent="TextureRect/StoreItems/DrillCard" unique_id=1032999057]
+top_level = true
+layout_mode = 0
+offset_left = 121.0
+offset_top = 59.0
+offset_right = 193.0
+offset_bottom = 135.0
+texture = ExtResource("1_025or")
+expand_mode = 1
+
+[node name="Background" type="TextureRect" parent="TextureRect/StoreItems/DrillCard" unique_id=1777816990]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 119.0
+offset_bottom = 131.0
+texture = ExtResource("1_025or")
+expand_mode = 1
+
+[node name="Name" type="Label" parent="TextureRect/StoreItems/DrillCard" unique_id=1809043045]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 97.0
+offset_right = 65.0
+offset_bottom = 120.0
+text = "Test"
+
+[node name="Price" type="Label" parent="TextureRect/StoreItems/DrillCard" unique_id=1806172599]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 98.0
+offset_right = 101.0
+offset_bottom = 124.0
+text = "Test"
+
+[node name="Button" type="Button" parent="TextureRect/StoreItems/DrillCard" unique_id=176256544]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Conveyor" type="Control" parent="TextureRect/StoreItems" unique_id=1264477764 node_paths=PackedStringArray("card_frame", "icon", "name_label", "price_label")]
+layout_mode = 2
+script = ExtResource("5_yacys")
+buildable_data = ExtResource("8_q00ha")
+building_scene = ExtResource("9_5ab3w")
+card_frame = NodePath("Image")
+icon = NodePath("Background")
+name_label = NodePath("Name")
+price_label = NodePath("Price")
+
+[node name="Image" type="TextureRect" parent="TextureRect/StoreItems/Conveyor" unique_id=1617514702]
+top_level = true
+layout_mode = 0
+offset_left = 246.0
+offset_top = 55.0
+offset_right = 318.0
+offset_bottom = 131.0
+texture = ExtResource("1_025or")
+expand_mode = 1
+
+[node name="Background" type="TextureRect" parent="TextureRect/StoreItems/Conveyor" unique_id=95187656]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 4.0
+offset_right = 240.0
+offset_bottom = 131.0
+texture = ExtResource("1_025or")
+expand_mode = 1
+
+[node name="Name" type="Label" parent="TextureRect/StoreItems/Conveyor" unique_id=1299156581]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 97.0
+offset_right = 65.0
+offset_bottom = 120.0
+text = "Test"
+
+[node name="Price" type="Label" parent="TextureRect/StoreItems/Conveyor" unique_id=1679516131]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 98.0
+offset_right = 101.0
+offset_bottom = 124.0
+text = "Test"
+
+[node name="Button" type="Button" parent="TextureRect/StoreItems/Conveyor" unique_id=2142981471]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Control" type="Control" parent="TextureRect/StoreItems" unique_id=226409705]
+custom_maximum_size = Vector2(0, 0)
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="TextureRect/StoreItems/Control" unique_id=1444849640]
+top_level = true
+layout_mode = 0
+offset_left = 121.0
+offset_top = 59.0
+offset_right = 193.0
+offset_bottom = 135.0
+texture = ExtResource("1_025or")
+expand_mode = 1
 
 [connection signal="pressed" from="Store" to="." method="_on_store_pressed"]
 [connection signal="pressed" from="Store" to="TextureRect/StoreItems" method="_on_store_pressed"]
